@@ -1,0 +1,5 @@
+jQuery.ProfanityFilter Plugin
+
+Usage:
+
+$('#SomeElement').ProfanityFilter({customSwears: ['shit']});
