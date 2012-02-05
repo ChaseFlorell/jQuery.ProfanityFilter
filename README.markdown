@@ -43,7 +43,7 @@ Option 4:
 
 ---
 
-Find a bug? Please create an issue here on GitHub!
+Find a bug? Please create an issue here on GitHub!  
 https://github.com/ChaseFlorell/jQuery.ProfanityFilter/issues
 
 
