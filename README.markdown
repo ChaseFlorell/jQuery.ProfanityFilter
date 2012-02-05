@@ -2,7 +2,9 @@
 
 The `jQuery.ProfanityFilter` has the ability to filter out profane words on the client side.
 
-This was built in order to allow users to "Opt-in" to profanity filtering, and offload all of the work to the client.
+This was built in order to allow users to "Opt-in" to profanity filtering, and offload all of the work to the client, saving the headache on the server.
+
+###**Usage Options**###
 
 Option 1:
 
