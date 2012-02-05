@@ -2,9 +2,11 @@
 
 The `jQuery.ProfanityFilter` has the ability to filter out profane words on the client side.
 
-This was built in order to allow users to "Opt-in" to profanity filtering, and offload all of the work to the client, saving the headache on the server.
+This was built in order to allow users to "Opt-in" to profanity filtering, and offload all of the work to the client, saving the headache on the server. The `jQuery.ProfanityFilter` also attempts to use Local Storage on the client machine in order to reduce lookups at the `externalSwears` URL.
 
-###**Usage Options**###
+###**Usage:**###
+
+---
 
 Option 1:
 
@@ -36,5 +38,27 @@ Option 4:
 		externalSwears: '/Path/To/Json/Swears/'
 	});`
 
-**Mentions:**  
-The `jQuery.ProfanityFilter` attempts to use Local Storage on the client machine in order to reduce lookups at the `externalSwears` URL.
+
+###**Bug Tracker:**###
+
+---
+
+Find a bug? Please create an issue here on GitHub!
+https://github.com/ChaseFlorell/jQuery.ProfanityFilter/issues
+
+
+
+###**Author:**###
+
+---
+  
+Chase Florell  
+
+- http://github.com/ChaseFlorell
+- http://twitter.com/ChaseFlorell
+
+###**Copyright and License**###
+
+---
+
+You can use this however the heck you want. If you like it, say thanks.
