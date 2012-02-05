@@ -5,6 +5,20 @@ String.prototype.repeat = function (num) {
     return new Array(num + 1).join(this);
 };
 
+/// <summary>Removes duplicates from concatonated strings</summary>
+/// <returns>Array</returns>
+Array.prototype.unique = function () {
+    var a = this.concat();
+    for (var i = 0; i < a.length; ++i) {
+        for (var j = i + 1; j < a.length; ++j) {
+            if (a[i] === a[j])
+                a.splice(j, 1);
+        }
+    }
+
+    return a;
+};
+
 
 /// <summary>takes an element and blots out the swear words</summary>
 /// <returns>'*****'</returns>
@@ -86,7 +100,7 @@ String.prototype.repeat = function (num) {
                     badWords = readJsonFromController(settings.externalSwears);
                 }
                 if (settings.customSwears !== null) {
-                    badWords = badWords.concat(settings.customSwears);
+                    badWords = badWords.concat(settings.customSwears).unique();
                 }
             } else {
                 if (settings.customSwears !== null) {
