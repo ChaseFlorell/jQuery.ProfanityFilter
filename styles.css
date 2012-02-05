@@ -1,0 +1,15 @@
+body{
+    font-family: verdana, arial, sans-serif;
+    font-size:1.1em;
+}
+
+.demo{
+    font-family: monospace, serif;
+    font-size: 1.1em;
+    color: #666;
+    border: 1px solid #333;
+    margin: 10px;
+    padding: 10px;
+    display: block;
+    width: 400px;
+}

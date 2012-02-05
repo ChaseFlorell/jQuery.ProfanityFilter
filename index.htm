@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>jQuery.ProfanityFilter Demo</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.profanityfilter.js"></script>
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="one" class="demo">
+        This container will have the word shit filtered but ass won't be
+    </div>
+    <script>
+        $('#one').ProfanityFilter({
+            externalSwears: '/swearWords.json'
+        })
+    </script>
+
+
+
+    <div id="two" class="demo">
+        This container will have the word shit filtered and the word ass will also be filtered
+    </div>
+    <script>
+        $('#two').ProfanityFilter({
+            customSwears: ['ass'],
+            externalSwears: '/swearWords.json'
+        })
+    </script>
+
+
+    <div id="three" class="demo">
+        This container will have the word shit filtered but ass won't be. The difference here is that the replacement character is changed.
+    </div>
+    <script>
+        $('#three').ProfanityFilter({
+            replace:'#',
+            externalSwears: '/swearWords.json'
+        })
+    </script>
+</body>
+</html>
