@@ -3,18 +3,21 @@
 <head>
     <title>jQuery.ProfanityFilter Demo</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdn.bitbucket.org/shekharpro/google_code_prettify/downloads/prettify.js"></script>
+    
     <script type="text/javascript" src="jquery.profanityfilter.js"></script>
-    <link href="styles.css" type="text/css" rel="stylesheet" />
+    <link href="styles.css" type="text/css" rel="stylesheet"/>
 </head>
-<body>
+<body onload="prettyPrint()">
 <div id="wrapper">
     <header>
         <h1>jQuery.ProfanityFilter</h1>
+
         <h2>a simple client side profanity filter</h2>
     </header>
 
     <section>
-<pre class="code box">
+<pre class="prettyprint code box">
 $('#one').profanityFilter({
     externalSwears: '/swearWords.json'
 }) </pre>
@@ -34,7 +37,7 @@ $('#one').profanityFilter({
     </section>
 
     <section>
-<pre class="code box">
+<pre class="prettyprint code box">
 $('#two').profanityFilter({
     customSwears: ['ass'],
     externalSwears: '/swearWords.json'
@@ -47,7 +50,7 @@ $('#two').profanityFilter({
                 Often when I go to the bathroom, shit comes out of my ass.
             </div>
             <script>
-               $('#two').profanityFilter({
+                $('#two').profanityFilter({
                     customSwears: ['ass'],
                     externalSwears: '/swearWords.json'
                 })
@@ -56,22 +59,23 @@ $('#two').profanityFilter({
     </section>
 
     <section>
-<pre class="code box">
+<pre class="prettyprint code box">
 $('#three').profanityFilter({
-    replace:'#',
+    replaceWith:'#',
     customSwears: ['ass'],
     externalSwears: '/swearWords.json'
 })</pre>
         <div class="description-example-wrapper">
             <div class="description box">
-                This container will filter both the words "shit" and "ass", but will also change the replacement character from an asterisk (*) to a pound sign (#)
+                This container will filter both the words "shit" and "ass", but will also change the replacement
+                character from an asterisk (*) to a pound sign (#)
             </div>
             <div id="three" class="example box">
                 Often when I go to the bathroom, shit comes out of my ass.
             </div>
             <script>
                 $('#three').profanityFilter({
-                    replace:'#',
+                    replaceWith:'#',
                     customSwears: ['ass'],
                     externalSwears: '/swearWords.json'
                 })
@@ -81,15 +85,18 @@ $('#three').profanityFilter({
 
     <footer class="box">
         <p>Like what you see?<br>
-        <b>Download:</b> <a href="https://github.com/ChaseFlorell/jQuery.ProfanityFilter">on GitHub</a></p>
+            <b>Download:</b> <a href="https://github.com/ChaseFlorell/jQuery.ProfanityFilter">on GitHub</a></p>
+
         <p>Find a bug?<br>
-        <b>Issues:</b> <a href="https://github.com/ChaseFlorell/jQuery.ProfanityFilter/issues">Issue tracker</a></p>
+            <b>Issues:</b> <a href="https://github.com/ChaseFlorell/jQuery.ProfanityFilter/issues">Issue tracker</a></p>
+
         <p>Who's the author?<br>
-        <b>GitHub:</b> <a href="http://github.com/ChaseFlorell">Chase Florell</a><br>
-        <b>Twitter:</b> <a href="http://twitter.com/ChaseFlorell">@ChaseFlorell</a></p>
+            <b>GitHub:</b> <a href="http://github.com/ChaseFlorell">Chase Florell</a><br>
+            <b>Twitter:</b> <a href="http://twitter.com/ChaseFlorell">@ChaseFlorell</a></p>
     </footer>
     <div class="github">
-        <a href="https://github.com/ChaseFlorell/jQuery.ProfanityFilter"><img src="http://pystar.github.com/pystar/_static/img/forkme_right_darkblue_121621.png" /></a>
+        <a href="https://github.com/ChaseFlorell/jQuery.ProfanityFilter"><img
+                src="http://pystar.github.com/pystar/_static/img/forkme_right_darkblue_121621.png"/></a>
     </div>
 
 </div>

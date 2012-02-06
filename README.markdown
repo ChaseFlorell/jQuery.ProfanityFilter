@@ -29,7 +29,7 @@ Option 3:
     // Change the replacement character from an astrisk (*) to a pound sign (#)
     $(document).ProfanityFilter({
 		externalSwears: '/Path/To/Json/Swears/',
-		replace: '#'
+		replaceWith: '#'
 	});`
 
 Option 4:

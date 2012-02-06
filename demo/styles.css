@@ -1,18 +1,18 @@
 html {
-   min-height: 100%;
+    min-height: 100%;
 }
 
-body{
+body {
     font-family: monospace;
-    margin:  0, auto;
-	background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(38,38,38,1) 100%);
-	background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(38,38,38,1) 100%);
-	background: -o-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(38,38,38,1) 100%);
-	background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(38,38,38,1) 100%);
-	background: linear-gradient(top, rgba(76,76,76,1) 0%, rgba(38,38,38,1) 100%);
+    margin: 0, auto;
+    background: -webkit-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(38, 38, 38, 1) 100%);
+    background: -moz-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(38, 38, 38, 1) 100%);
+    background: -o-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(38, 38, 38, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(38, 38, 38, 1) 100%);
+    background: linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(38, 38, 38, 1) 100%);
 }
 
-h1{
+h1 {
     font-size: 5em;
     color: #ccc;
     -moz-text-shadow: 3px 3px 2px #333;
@@ -20,7 +20,7 @@ h1{
     text-shadow: 3px 3px 2px #333;
 }
 
-h2{
+h2 {
     font-size: 2em;
     margin-top: -30px;
     color: #ccc;
@@ -29,61 +29,61 @@ h2{
     text-shadow: 3px 3px 2px #333;
 }
 
-footer{
+footer {
     width: 760px;
     margin: 0 auto;
-    font-size: .8em;
+    font-size: .9em;
 }
 
-#wrapper{
+#wrapper {
     text-align: center;
 }
 
-.box{
+.box {
     background-color: #ccc;
-    text-align: left ;
+    text-align: left;
     font-family: monospace, serif;
     color: #444;
     border: 1px solid #333;
     padding: 10px;
-	-webkit-box-shadow: 0 0 5px #333;
-	-moz-box-shadow: 0 0 5px #333;
-	box-shadow:0 0 5px #333;
+    -webkit-box-shadow: 0 0 5px #333;
+    -moz-box-shadow: 0 0 5px #333;
+    box-shadow: 0 0 5px #333;
 }
 
-section{
+section {
     /*background-color: orange;*/
     margin: 30px auto;
     width: 760px;
-    overflow: auto;
+    overflow: hidden;
     padding: 0;
     min-height: 100px;
 }
 
-section.description-example-wrapper{
-    float:left;
+section.description-example-wrapper {
+    float: left;
 }
 
-section pre{
-    float:right;
+section pre {
+    float: right;
 }
 
-.description{
+.description {
     width: 400px;
-    font-family: verdana,sans-serif;
+    font-family: verdana, sans-serif;
     font-size: .9em;
     margin-bottom: 10px;
 }
 
-.code{
+.code {
     margin: 0;
     width: 300px;
     height: 100%;
-    font-size: .8em;
+    font-size: .9em;
     padding: 10px;
 }
 
-.example{
+.example {
     width: 400px;
     font-family: arial, sans-serif;
     font-size: .9em;
@@ -91,8 +91,13 @@ section pre{
     height: 100%;
 }
 
-.github{
+.github {
     position: absolute;
-    top:0px;
-    right:0px
+    top: 0px;
+    right: 0px
 }
+
+
+/*Prettify CSS
+##################################*/
+.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun{color:#660}.pln{color:#000}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec{color:#606}pre.prettyprint{background-color: #ccc;text-align: left;font-family: monospace, serif;color: #444;border: 1px solid #333;padding: 10px;-webkit-box-shadow: 0 0 5px #333;-moz-box-shadow: 0 0 5px #333;box-shadow: 0 0 5px #333;}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}@media print{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun{color:#440}.pln{color:#000}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}

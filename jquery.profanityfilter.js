@@ -23,7 +23,7 @@
 
     /// <summary>Default settings for profanityFilter plugin</summary>
     var defaults = {
-        replace: '*',
+        replaceWith: '*',
         customSwears: null,
         externalSwears: null
     };
@@ -118,7 +118,7 @@
             for (x = 0; x < nodes.length; x += 1) {
                 for (i = 0; i < badWords.length; i += 1) {
                     re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
-                    rep = settings.replace.repeat(badWords[i].length);
+                    rep = settings.replaceWith.repeat(badWords[i].length);
                     if (re.test(nodes[x].nodeValue)) {
                         nodes[
 
