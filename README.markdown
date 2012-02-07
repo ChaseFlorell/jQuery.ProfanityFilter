@@ -1,3 +1,4 @@
+<!-- a comment-->
 ## **jQuery.ProfanityFilter Plug-in** ##
 
 http://profanityfilter.chaseflorell.com
