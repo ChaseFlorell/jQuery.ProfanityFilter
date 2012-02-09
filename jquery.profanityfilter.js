@@ -10,9 +10,9 @@
     /// <summary>Removes duplicates from concatenated strings</summary>
     /// <returns>Array</returns>
     Array.prototype.unique = function () {
-        var a,
-            i,
-            j;
+        var a, // array
+            i, // incremental counter
+            j; // next incremental counter
 
         a = this.concat();
         for (i = 0; i < a.length; ++i) {
