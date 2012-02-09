@@ -10,12 +10,16 @@
     /// <summary>Removes duplicates from concatenated strings</summary>
     /// <returns>Array</returns>
     Array.prototype.unique = function () {
-        var a, i, j;
+        var a,
+            i,
+            j;
+
         a = this.concat();
         for (i = 0; i < a.length; ++i) {
             for (j = i + 1; j < a.length; ++j) {
-                if (a[i] === a[j])
+                if (a[i] === a[j]){
                     a.splice(j, 1);
+                }
             }
         }
 
@@ -35,11 +39,26 @@
     /// <returns>text from an element but blots out the swear words</returns>
     $.fn.profanityFilter = function (settings) {
 
-        var options = $.extend({}, defaults, settings);
+        var options = $.extend({}, defaults, settings),
+            localStorageIsEnabled;
+
+        localStorageIsEnabled = function() {
+              var uid = new Date(),
+                  result;
+
+              try {
+                localStorage.setItem("uid", uid);
+                result = localStorage.getItem("uid") === uid;
+                localStorage.removeItem("uid");
+                return result && localStorage;
+              } catch(e) {}
+        }();
 
         function allTextNodes(parent) {
             function getChildNodes(parent) {
-                var x, out = [];
+                var x,
+                    out = [];
+
                 for (x = 0; x < parent.childNodes.length; x += 1) {
                     out[x] = parent.childNodes[x];
                 }
@@ -74,20 +93,15 @@
             }
         }
 
-        function localStorageIsEnabled() {
-            try {
-                var uid = new Date();
-                this.localStorageIsEnabled = window.localStorage;
-                localStorageIsEnabled.setItem(uid, uid);
-                if (localStorageIsEnabled.getItem(uid) != uid) {
-                    this.localStorageIsEnabled = false;
-                }
-            } catch (e) { }
-        }
-
 
         return this.each(function () {
-            var x, i, re, rep, badWords, nodes = allTextNodes(this);
+
+            var badWords,
+                i,
+                nodes = allTextNodes(this),
+                re,
+                rep,
+                x;
 
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
