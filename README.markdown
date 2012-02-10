@@ -50,6 +50,13 @@ Find a bug? Please create an issue here on GitHub!
 https://github.com/ChaseFlorell/jQuery.ProfanityFilter/issues
 
 
+###**Dependencies**###
+
+----
+
+This plugin requires:
+
+ - [jQuery](http://jquery.com/) (tested 1.7.1)
 
 ###**Author:**###
 
@@ -57,8 +64,8 @@ https://github.com/ChaseFlorell/jQuery.ProfanityFilter/issues
   
 Chase Florell  
 
-- http://github.com/ChaseFlorell
-- http://twitter.com/ChaseFlorell
+ - http://github.com/ChaseFlorell
+ - http://twitter.com/ChaseFlorell
 
 ###**Copyright and License**###
 
