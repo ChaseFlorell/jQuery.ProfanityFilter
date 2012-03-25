@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-(function ($) {
-
-    /// <summary>takes a string and repeates it "n" times.</summary>
-=======
+/// <summary>takes a string and repeates it "n" times.</summary>
 ﻿(function ($) {
     "use strict";
     /// <summary>takes a string and repeats it "n" times.</summary>
->>>>>>> da19f71e3d10d9b17e37131a67d28d63c81c3716
     /// <param name="num" type="Number">times to repeat the string</param>
     /// <returns>rep = '*'.repeat(5);    // rep = '*****'</returns>
     String.prototype.repeat = function (num) {
