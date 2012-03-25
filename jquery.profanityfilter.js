@@ -1,20 +1,31 @@
+<<<<<<< HEAD
 (function ($) {
 
     /// <summary>takes a string and repeates it "n" times.</summary>
+=======
+﻿(function ($) {
+    "use strict";
+    /// <summary>takes a string and repeats it "n" times.</summary>
+>>>>>>> da19f71e3d10d9b17e37131a67d28d63c81c3716
     /// <param name="num" type="Number">times to repeat the string</param>
     /// <returns>rep = '*'.repeat(5);    // rep = '*****'</returns>
     String.prototype.repeat = function (num) {
         return new Array(num + 1).join(this);
     };
 
-    /// <summary>Removes duplicates from concatonated strings</summary>
+    /// <summary>Removes duplicates from concatenated strings</summary>
     /// <returns>Array</returns>
     Array.prototype.unique = function () {
-        var a = this.concat();
-        for (var i = 0; i < a.length; ++i) {
-            for (var j = i + 1; j < a.length; ++j) {
-                if (a[i] === a[j])
+        var a, // array
+            i, // incremental counter
+            j; // next incremental counter
+
+        a = this.concat();
+        for (i = 0; i < a.length; ++i) {
+            for (j = i + 1; j < a.length; ++j) {
+                if (a[i] === a[j]){
                     a.splice(j, 1);
+                }
             }
         }
 
@@ -34,11 +45,26 @@
     /// <returns>text from an element but blots out the swear words</returns>
     $.fn.profanityFilter = function (settings) {
 
-        var settings = $.extend({}, defaults, settings);
+        var options = $.extend({}, defaults, settings),
+            localStorageIsEnabled;
+
+        localStorageIsEnabled = function() {
+              var uid = new Date(),
+                  result;
+
+              try {
+                localStorage.setItem("uid", uid);
+                result = localStorage.getItem("uid") === uid;
+                localStorage.removeItem("uid");
+                return result && localStorage;
+              } catch(e) {}
+        }();
 
         function allTextNodes(parent) {
             function getChildNodes(parent) {
-                var x, out = [];
+                var x,
+                    out = [];
+
                 for (x = 0; x < parent.childNodes.length; x += 1) {
                     out[x] = parent.childNodes[x];
                 }
@@ -69,44 +95,37 @@
             request.send(null);
             try {
                 return JSON.parse(request.responseText);
-            }
-            catch (e) {
+            } catch (e) {
                 return '';
             }
         }
 
-        function localStorageIsEnabled() {
-            try {
-                var uid = new Date();
-                localStorageIsEnabled = window.localStorage;
-                localStorageIsEnabled.setItem(uid, uid);
-                if (localStorageIsEnabled.getItem(uid) != uid) {
-                    localStorageIsEnabled = false;
-                }
-            }
-            catch (e) { }
-        }
-
 
         return this.each(function () {
-            var x, i, re, rep, badWords, nodes = allTextNodes(this);
 
-            if (settings.externalSwears !== null) {
+            var badWords,
+                i,
+                nodes = allTextNodes(this),
+                re,
+                rep,
+                x;
+
+            if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
                     if (localStorage.getItem('localSwears') === null) {
                         // stringify the array so that it can be stored in local storage
-                        localStorage.setItem('localSwears', JSON.stringify(readJsonFromController(settings.externalSwears)));
+                        localStorage.setItem('localSwears', JSON.stringify(readJsonFromController(options.externalSwears)));
                     }
                     badWords = JSON.parse(localStorage.getItem('localSwears'));
                 } else {
-                    badWords = readJsonFromController(settings.externalSwears);
+                    badWords = readJsonFromController(options.externalSwears);
                 }
-                if (settings.customSwears !== null) {
-                    badWords = badWords.concat(settings.customSwears).unique();
+                if (options.customSwears !== null) {
+                    badWords = badWords.concat(options.customSwears).unique();
                 }
             } else {
-                if (settings.customSwears !== null) {
-                    badWords = settings.customSwears;
+                if (options.customSwears !== null) {
+                    badWords = options.customSwears;
                 }
             }
 
@@ -119,7 +138,7 @@
             for (x = 0; x < nodes.length; x += 1) {
                 for (i = 0; i < badWords.length; i += 1) {
                     re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
-                    rep = settings.replaceWith.repeat(badWords[i].length);
+                    rep = options.replaceWith.repeat(badWords[i].length);
                     if (re.test(nodes[x].nodeValue)) {
                         nodes[
 
