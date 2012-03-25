@@ -1,4 +1,3 @@
-/// <summary>takes a string and repeates it "n" times.</summary>
 ﻿(function ($) {
     "use strict";
     /// <summary>takes a string and repeats it "n" times.</summary>
