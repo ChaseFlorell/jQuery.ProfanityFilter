@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
 
     /// <summary>takes a string and repeates it "n" times.</summary>
     /// <param name="num" type="Number">times to repeat the string</param>
@@ -46,7 +46,8 @@
                 return out;
             }
 
-            var cursor, closed = [],
+            var cursor, 
+            	closed = [],
                 open = getChildNodes(parent);
 
             while (open.length) {
