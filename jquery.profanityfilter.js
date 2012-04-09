@@ -66,7 +66,8 @@
                 return out;
             }
 
-            var cursor, closed = [],
+            var cursor, 
+            	closed = [],
                 open = getChildNodes(parent);
 
             while (open.length) {
