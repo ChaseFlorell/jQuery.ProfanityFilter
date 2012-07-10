@@ -101,7 +101,7 @@
           if (lastRandomNumber == null) {
             lastRandomNumber = randomNumber;
           } else {
-            if (randomNumber == lastRandomNumber) {
+            if (randomNumber == lastRandomNumber && max !=0) {
               randomNumber +=1;
             }
           }
