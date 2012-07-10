@@ -30,7 +30,8 @@
     var defaults = {
         replaceWith: '*',
         customSwears: null,
-        externalSwears: null
+        externalSwears: null,
+        repeat: true
     };
 
 
@@ -93,6 +94,25 @@
                 return '';
             }
         }
+        
+        var lastRandomNumber = null;
+        function generateRandomNumber(max) {
+          var randomNumber = Math.floor((Math.random()*(max)));
+          if (lastRandomNumber == null) {
+            lastRandomNumber = randomNumber;
+          } else {
+            if (randomNumber == lastRandomNumber) {
+              randomNumber +=1;
+            }
+          }
+          
+          if (randomNumber > max) {
+            //set it back to zero
+            randomNumber = 0;
+          }
+          
+          return randomNumber;
+        }
 
 
         return this.each(function () {
@@ -132,11 +152,15 @@
             for (x = 0; x < nodes.length; x += 1) {
                 for (i = 0; i < badWords.length; i += 1) {
                     re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
-                    rep = options.replaceWith.repeat(badWords[i].length);
+                    
+                    var rand = generateRandomNumber(options.replaceWith.length -1);
+                   
+                    rep = options.replaceWith[rand];
+                    if (options.repeat) {
+                      rep = options.replaceWith[rand].repeat(badWords[i].length);
+                    }
                     if (re.test(nodes[x].nodeValue)) {
-                        nodes[
-
-                        x].nodeValue = nodes[x].nodeValue.replace(re, rep);
+                        nodes[x].nodeValue = nodes[x].nodeValue.replace(re, rep);
                     }
                 }
             }

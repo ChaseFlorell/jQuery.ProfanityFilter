@@ -86,6 +86,38 @@ $('#three').profanityFilter({
             </script>
         </div>
     </section>
+    
+    <section>
+<pre class="prettyprint code box">
+// code:
+$('#four').profanityFilter({
+    replaceWith:[
+      'pretty flower',
+      'rainbows',
+      'bob',
+      'timmy',
+      'pony'
+      ],
+    externalSwears: '/swearWords.json',
+    repeat: false
+})</pre>
+        <div class="description-example-wrapper">
+            <div class="description box">
+                This container will filter both the words "shit" and "arse" with a random replacement word (need to set up at least three words).
+                The <span class="code">repeat: false</span> is so that the entire word is replaced by the replacement value instead of every letter.
+            </div>
+            <div id="four" class="example box">
+                Often when I go to the bathroom, shit comes out of my arse.
+            </div>
+            <script>
+                $('#four').profanityFilter({
+                    replaceWith:['pretty flower','rainbows','bob','timmy','pony'],
+                    externalSwears: '/swearWords.json',
+                    repeat:false
+                })
+            </script>
+        </div>
+    </section>
 
     <footer class="box">
         <p>Like what you see?<br>
