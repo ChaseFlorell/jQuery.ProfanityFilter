@@ -111,6 +111,8 @@
             randomNumber = 0;
           }
           
+          lastRandomNumber = randomNumber;
+          
           return randomNumber;
         }
 

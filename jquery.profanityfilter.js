@@ -94,7 +94,7 @@
                 return '';
             }
         }
-        
+
         var lastRandomNumber = null;
         function generateRandomNumber(max) {
           var randomNumber = Math.floor((Math.random()*(max)));
@@ -110,6 +110,8 @@
             //set it back to zero
             randomNumber = 0;
           }
+          
+          lastRandomNumber = randomNumber;
           
           return randomNumber;
         }
