@@ -23,8 +23,8 @@ Option 1:
 
 Option 2:
 
-    // Filter an external array of words on the entire document  
-    $('#SomeElement').profanityFilter({
+    // Filter an external array of words on the entire document
+    $(document).profanityFilter({
 		externalSwears: '/Path/To/Json/Swears/'
 	});
 
