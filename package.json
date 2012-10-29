@@ -1,0 +1,34 @@
+{
+   "name": "jQuery.ProfanityFilter",
+   "version": "1.0",
+   "description": "a simple client side profanity filter.",
+   "keywords": [
+       "profanity",
+       "jquery"
+   ],
+   "maintainers": [
+       {
+           "name": "chase florell",
+           "web": "https://github.com/ChaseFlorell"
+       }
+   ],
+   "contributors": [],
+   "bugs": {
+       "web": "https://github.com/ChaseFlorell/jQuery.ProfanityFilter/issues"
+   },
+   "licenses": [
+       {
+           "type": "MIT",
+           "url": "http://chaseflorell.com/mit-license.html"
+       }
+   ],
+   "repositories": [
+       {
+           "type": "git",
+           "url": "git://github.com/ChaseFlorell/jQuery.ProfanityFilter.git"
+       }
+   ],
+   "dependencies": {
+       "jquery": "1.7.1"
+   }
+}
