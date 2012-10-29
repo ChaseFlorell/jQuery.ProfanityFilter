@@ -34,6 +34,7 @@ Option 3:
 	});
 
 Option 4:
+
     // Change the replacement from astrisks (*) to random words
     $(document).ProfanityFilter({
         externalSwears: '/Path/To/Json/Swears/',
