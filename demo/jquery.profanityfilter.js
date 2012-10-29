@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
     "use strict";
     /// <summary>takes a string and repeats it "n" times.</summary>
     /// <param name="num" type="Number">times to repeat the string</param>
@@ -66,7 +66,8 @@
                 return out;
             }
 
-            var cursor, closed = [],
+            var cursor, 
+                closed = [],
                 open = getChildNodes(parent);
 
             while (open.length) {
@@ -91,6 +92,27 @@
             } catch (e) {
                 return '';
             }
+        }
+
+        var lastRandomNumber = null;
+        function generateRandomNumber(max) {
+          var randomNumber = Math.floor((Math.random()*(max)));
+          if (lastRandomNumber == null) {
+            lastRandomNumber = randomNumber;
+          } else {
+            if (randomNumber == lastRandomNumber && max !=0) {
+              randomNumber +=1;
+            }
+          }
+          
+          if (randomNumber > max) {
+            //set it back to zero
+            randomNumber = 0;
+          }
+          
+          lastRandomNumber = randomNumber;
+          
+          return randomNumber;
         }
 
 
@@ -131,11 +153,15 @@
             for (x = 0; x < nodes.length; x += 1) {
                 for (i = 0; i < badWords.length; i += 1) {
                     re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
-                    rep = options.replaceWith.repeat(badWords[i].length);
+                    
+                    var rand = generateRandomNumber(options.replaceWith.length -1);
+                   
+                    rep = options.replaceWith[rand];
+                    if (typeof options.replaceWith == 'string') {
+                      rep = options.replaceWith[rand].repeat(badWords[i].length);
+                    }
                     if (re.test(nodes[x].nodeValue)) {
-                        nodes[
-
-                        x].nodeValue = nodes[x].nodeValue.replace(re, rep);
+                        nodes[x].nodeValue = nodes[x].nodeValue.replace(re, rep);
                     }
                 }
             }

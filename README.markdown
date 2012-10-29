@@ -23,7 +23,7 @@ Option 2:
     // Filter an external array of words on the entire document  
     $(document).ProfanityFilter({
 		externalSwears: '/Path/To/Json/Swears/'
-	});`
+	});
 
 Option 3:
 
@@ -31,15 +31,22 @@ Option 3:
     $(document).ProfanityFilter({
 		externalSwears: '/Path/To/Json/Swears/',
 		replaceWith: '#'
-	});`
+	});
 
 Option 4:
+    // Change the replacement from astrisks (*) to random words
+    $(document).ProfanityFilter({
+        externalSwears: '/Path/To/Json/Swears/',
+        replaceWith: ['fiddle', 'fun', 'stupendous']
+    });
+
+Option 5:
 
     // Combine an externl Swear list with a custom list (don't worry, we'll remove duplicates)
     $(document).ProfanityFilter({
 		customSwears: ['monkeyass'],
 		externalSwears: '/Path/To/Json/Swears/'
-	});`
+	});
 
 
 ###**Bug Tracker:**###

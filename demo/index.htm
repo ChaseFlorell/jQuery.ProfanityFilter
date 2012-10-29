@@ -65,6 +65,32 @@ $('#two').profanityFilter({
 <pre class="prettyprint code box">
 // code:
 $('#three').profanityFilter({
+    replaceWith: ['fun', 'stuff'],
+    customSwears: ['ass'],
+    externalSwears: '/swearWords.json'
+})</pre>
+        <div class="description-example-wrapper">
+            <div class="description box">
+                This container will filter both the words "shit" and "ass", but will also change the replacement
+                character from an asterisk (*) a random word listed in the `replaceWith` array.
+            </div>
+            <div id="three" class="example box">
+                Often when I go to the bathroom, shit comes out of my ass.
+            </div>
+            <script>
+                $('#three').profanityFilter({
+                    replaceWith: ['fun', 'stuff'],
+                    customSwears: ['ass'],
+                    externalSwears: '/swearWords.json'
+                })
+            </script>
+        </div>
+    </section>
+
+    <section>
+<pre class="prettyprint code box">
+// code:
+$('#four').profanityFilter({
     replaceWith:'#',
     customSwears: ['ass'],
     externalSwears: '/swearWords.json'
@@ -74,11 +100,11 @@ $('#three').profanityFilter({
                 This container will filter both the words "shit" and "ass", but will also change the replacement
                 character from an asterisk (*) to a pound sign (#)
             </div>
-            <div id="three" class="example box">
+            <div id="four" class="example box">
                 Often when I go to the bathroom, shit comes out of my ass.
             </div>
             <script>
-                $('#three').profanityFilter({
+                $('#four').profanityFilter({
                     replaceWith:'#',
                     customSwears: ['ass'],
                     externalSwears: '/swearWords.json'
