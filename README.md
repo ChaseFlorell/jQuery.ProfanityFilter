@@ -8,7 +8,7 @@ The `jQuery.profanityFilter` has the ability to filter out profane words on the 
 This was built in order to allow users to "Opt-in" to profanity filtering, and offload all of the work to the client, saving the headache on the server. The `jQuery.profanityFilter` also attempts to use Local Storage on the client machine in order to reduce lookups at the `externalSwears` URL.
 
 ***Obvious warning:*** *The `swearWord` lists as well as code examples contain material that many will find offensive. (But that's the point!)*  
-**note: localization support provided by shutterstock's [List of Dirty, Naughty, Obscene, and Otherwise Bad Words](https://github.com/shutterstock/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words)
+*note: localization support provided by shutterstock's [List of Dirty, Naughty, Obscene, and Otherwise Bad Words](https://github.com/shutterstock/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words)*
 
 ###**Usage:**###
 
