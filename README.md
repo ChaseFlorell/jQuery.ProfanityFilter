@@ -60,6 +60,12 @@ Option 5:
 Find a bug? Please create an issue here on GitHub!    
 https://github.com/ChaseFlorell/jQuery.profanityFilter/issues
 
+###**Online Collaboration:**###
+
+---
+
+Find out where we're at, and add your $0.02!  
+https://trello.com/b/OJfgkAvS
 
 ###**Dependencies**###
 
