@@ -64,7 +64,7 @@ https://github.com/ChaseFlorell/jQuery.profanityFilter/issues
 
 ---
 
-Find out where we're at, and add your $0.02!
+Find out where we're at, and add your $0.02!  
 https://trello.com/b/OJfgkAvS
 
 ###**Dependencies**###
