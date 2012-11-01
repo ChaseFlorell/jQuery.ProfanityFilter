@@ -2,10 +2,10 @@
         <!-- There's no reason for this, I'm just dealing with branches -->
 <html>
 <head>
-    <title>jQuery.ProfanityFilter Demo</title>
+    <title>jQuery.profanityFilter Demo</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://cdn.bitbucket.org/shekharpro/google_code_prettify/downloads/prettify.js"></script>
-    
+
     <script type="text/javascript" src="jquery.profanityfilter.js"></script>
     <link href="styles.css" type="text/css" rel="stylesheet"/>
 </head>
@@ -21,18 +21,18 @@
 <pre class="prettyprint code box">
 // code:
 $('#one').profanityFilter({
-    externalSwears: '/swearWords.json'
+    customSwears: ['ass']
 }) </pre>
         <div class="description-example-wrapper">
             <div class="description box">
-                This container will filter the word "shit" but will not filter "ass"
+                This container will filter the word "ass" but will not filter "shit"
             </div>
             <div id="one" class="example box">
                 Often when I go to the bathroom, shit comes out of my ass.
             </div>
             <script>
                 $('#one').profanityFilter({
-                    externalSwears: '/swearWords.json'
+                    customSwears: ['ass']
                 })
             </script>
         </div>
