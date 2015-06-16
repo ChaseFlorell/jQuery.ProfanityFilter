@@ -41,8 +41,6 @@
     /// <returns>text from an element but blots out the swear words</returns>
     $.fn.profanityFilter = function (settings, callback) {
 
-        var profane = false;
-
         var options = $.extend({}, defaults, settings),
             localStorageIsEnabled;
 
@@ -127,7 +125,8 @@
                 nodes = allTextNodes(this),
                 re,
                 rep,
-                x;
+                x,
+                profane = false;;
 
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
