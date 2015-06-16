@@ -111,6 +111,37 @@ $('#four').profanityFilter({
             </script>
         </div>
     </section>
+<section>
+<pre class="prettyprint code box">
+// code:
+$('#five').profanityFilter({
+    customSwears: ['ass'],
+    filter: true,
+    profaneText: function() {
+        $('#five')
+            .css('color', 'blue');
+    }
+}) </pre>
+        <div class="description-example-wrapper">
+            <div class="description box">
+                This container won't filter anything, but it will do something clever because
+                it contains the word "ass"
+            </div>
+            <div id="five" class="example box">
+                Often when I go to the bathroom, shit comes out of my ass.
+            </div>
+            <script>
+                $('#five').profanityFilter({
+                    customSwears: ['ass'],
+                    filter: false,
+                    profaneText: function() {
+                        $('#five').css('color', 'blue');
+                    }
+                })
+            </script>
+        </div>
+    </section>
+
 
     <footer class="box">
         <p>Like what you see?<br>

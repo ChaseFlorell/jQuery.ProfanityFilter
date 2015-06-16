@@ -7,7 +7,7 @@ The `jQuery.profanityFilter` has the ability to filter out profane words on the 
 
 This was built in order to allow users to "Opt-in" to profanity filtering, and offload all of the work to the client, saving the headache on the server. The `jQuery.profanityFilter` also attempts to use Local Storage on the client machine in order to reduce lookups at the `externalSwears` URL.
 
-***Obvious warning:*** *The `swearWord` lists as well as code examples contain material that many will find offensive. (But that's the point!)*  
+***Obvious warning:*** *The `swearWord` lists as well as code examples contain material that many will find offensive. (But that's the point!)*
 *note: localization support provided by shutterstock's [List of Dirty, Naughty, Obscene, and Otherwise Bad Words](https://github.com/shutterstock/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words)*
 
 ###**Usage:**###
@@ -18,23 +18,23 @@ Option 1:
 
     // Filter the word "shit" every time it shows up inside the element "SomeElement"
     $('#SomeElement').profanityFilter({
-		customSwears: ['shit']
-	});`
+        customSwears: ['shit']
+    });
 
 Option 2:
 
     // Filter an external array of words on the entire document
     $(document).profanityFilter({
-		externalSwears: '/Path/To/Json/Swears/'
-	});
+        externalSwears: '/Path/To/Json/Swears/'
+    });
 
 Option 3:
 
     // Change the replacement character from an astrisk (*) to a pound sign (#)
     $('#SomeElement').profanityFilter({
-		externalSwears: '/Path/To/Json/Swears/',
-		replaceWith: '#'
-	});
+        externalSwears: '/Path/To/Json/Swears/',
+        replaceWith: '#'
+    });
 
 Option 4:
 
@@ -48,16 +48,31 @@ Option 5:
 
     // Combine an externl Swear list with a custom list (don't worry, we'll remove duplicates)
     $('#SomeElement').profanityFilter({
-		customSwears: ['monkeyass'],
-		externalSwears: '/Path/To/Json/Swears/'
-	});
+        customSwears: ['monkeyass'],
+        externalSwears: '/Path/To/Json/Swears/'
+    });
+
+Option 6:
+
+    // Don't filter anything. Useful in conjunction with the profaneText callback (which only
+    // fires when profanity exists).
+    // Ex. Check if the element contains profanity and throw an alert.
+    $('#SomeElement').profanityFilter({
+        customSwears: ['shit'],
+        filter: false,
+        profaneText: function() {
+            alert('That is vulgar!');
+        }
+    });
+
+
 
 
 ###**Bug Tracker:**###
 
 ---
 
-Find a bug? Please create an issue here on GitHub!    
+Find a bug? Please create an issue here on GitHub!
 https://github.com/ChaseFlorell/jQuery.profanityFilter/issues
 
 
@@ -72,8 +87,8 @@ This plugin requires:
 ###**Author:**###
 
 ---
-  
-Chase Florell  
+
+Chase Florell
 
  - http://github.com/ChaseFlorell
  - http://twitter.com/ChaseFlorell

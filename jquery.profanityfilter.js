@@ -30,14 +30,18 @@
     var defaults = {
         replaceWith: '*',
         customSwears: null,
-        externalSwears: null
+        externalSwears: null,
+        filter: true,
+        profaneText: function () {}
     };
 
 
     /// <summary>jQuery plugin used to filter profanity on the attached element</summary>
     /// <param name="settings">user overridden settings</param>
     /// <returns>text from an element but blots out the swear words</returns>
-    $.fn.profanityFilter = function (settings) {
+    $.fn.profanityFilter = function (settings, callback) {
+
+        var profane = false;
 
         var options = $.extend({}, defaults, settings),
             localStorageIsEnabled;
@@ -66,7 +70,7 @@
                 return out;
             }
 
-            var cursor, 
+            var cursor,
                 closed = [],
                 open = getChildNodes(parent);
 
@@ -104,14 +108,14 @@
               randomNumber +=1;
             }
           }
-          
+
           if (randomNumber > max) {
             //set it back to zero
             randomNumber = 0;
           }
-          
+
           lastRandomNumber = randomNumber;
-          
+
           return randomNumber;
         }
 
@@ -153,17 +157,24 @@
             for (x = 0; x < nodes.length; x += 1) {
                 for (i = 0; i < badWords.length; i += 1) {
                     re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
-                    
+
                     var rand = generateRandomNumber(options.replaceWith.length -1);
-                   
+
                     rep = options.replaceWith[rand];
                     if (typeof options.replaceWith == 'string') {
                       rep = options.replaceWith[rand].repeat(badWords[i].length);
                     }
                     if (re.test(nodes[x].nodeValue)) {
-                        nodes[x].nodeValue = nodes[x].nodeValue.replace(re, rep);
+                        profane = true;
+                        if (options.filter) {
+                            nodes[x].nodeValue = nodes[x].nodeValue.replace(re, rep);
+                        }
                     }
                 }
+            }
+
+            if (profane) {
+                options.profaneText();
             }
         });
     };
