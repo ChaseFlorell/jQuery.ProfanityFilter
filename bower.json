@@ -2,9 +2,9 @@
   "name": "jQuery.ProfanityFilter",
   "main": "jQuery.ProfanityFilter.js",
   "version": "1.0.0",
-  "homepage": "https://github.com/mkilpatrick/jQuery.ProfanityFilter",
+  "homepage": "https://github.com/ChaseFlorell/jQuery.ProfanityFilter",
   "authors": [
-    "Matt Kilpatrick <mkilpatrick@yext.com>"
+    "Chase Florell <chase.florell@gmail.com>"
   ],
   "description": "A simple cleint side profanity filter",
   "keywords": [
