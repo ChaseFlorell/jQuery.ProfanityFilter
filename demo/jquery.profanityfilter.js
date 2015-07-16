@@ -41,8 +41,6 @@
     /// <returns>text from an element but blots out the swear words</returns>
     $.fn.profanityFilter = function (settings, callback) {
 
-        var profane = false;
-
         var options = $.extend({}, defaults, settings),
             localStorageIsEnabled;
 
@@ -83,6 +81,7 @@
                     closed.push(cursor);
                 }
             }
+
             return closed;
         }
 
@@ -127,7 +126,9 @@
                 nodes = allTextNodes(this),
                 re,
                 rep,
-                x;
+                x,
+                inputs = $(this).find(':input'),
+                profane = false;
 
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
@@ -154,20 +155,32 @@
             }
 
             // We've got an array of swears, let's proceed with removing them from the element.
-            for (x = 0; x < nodes.length; x += 1) {
-                for (i = 0; i < badWords.length; i += 1) {
-                    re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
+            for (i = 0; i < badWords.length; i += 1) {
+                re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
 
-                    var rand = generateRandomNumber(options.replaceWith.length -1);
+                var rand = generateRandomNumber(options.replaceWith.length -1);
 
-                    rep = options.replaceWith[rand];
-                    if (typeof options.replaceWith == 'string') {
-                      rep = options.replaceWith[rand].repeat(badWords[i].length);
-                    }
+                rep = options.replaceWith[rand];
+                if (typeof options.replaceWith == 'string') {
+                  rep = options.replaceWith[rand].repeat(badWords[i].length);
+                }
+
+                // Text nodes
+                for (x = 0; x < nodes.length; x += 1) {
                     if (re.test(nodes[x].nodeValue)) {
                         profane = true;
                         if (options.filter) {
                             nodes[x].nodeValue = nodes[x].nodeValue.replace(re, rep);
+                        }
+                    }
+                }
+
+                // Text input values
+                for (var x = 0; x < inputs.length; x++) {
+                    if (re.test(inputs[x].value)) {
+                        profane = true;
+                        if (options.filter) {
+                            $(inputs[x]).val(inputs[x].value.replace(re, rep));
                         }
                     }
                 }
