@@ -1,7 +1,7 @@
 <!-- a comment-->
 ## **jQuery.profanityFilter plug-in** ##
 
-http://profanityFilter.chaseflorell.com
+[demo](https://chaseflorell.github.io/jQuery.ProfanityFilter/demo/)
 
 The `jQuery.profanityFilter` has the ability to filter out profane words on the client side.
 
