@@ -60,8 +60,9 @@ Option 6:
     $('#SomeElement').profanityFilter({
         customSwears: ['shit'],
         filter: false,
-        profaneText: function() {
+        profaneText: function(data) {
             alert('That is vulgar!');
+            console.log(data);
         }
     });
 

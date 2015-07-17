@@ -121,6 +121,7 @@ $('#five').profanityFilter({
     profaneText: function() {
         $('#five')
             .css('color', 'blue');
+            console.log(data);
     }
 }) </pre>
         <div class="description-example-wrapper">
@@ -138,6 +139,7 @@ $('#five').profanityFilter({
                     externalSwears: 'swearWords.json',
                     profaneText: function(data) {
                         $('#five').css('color', 'blue');
+                        console.log(data);
                     }
                 })
             </script>
