@@ -122,17 +122,17 @@ $('#four').profanityFilter({
         </section>
     <section>
     <pre class="prettyprint code box">
-    // code:
-    $('#five').profanityFilter({
-        customSwears: ['ass'],
-        filter: true,
-        externalSwears: 'swearWords.json',
-        profaneText: function(data) {
-            $('#five')
-                .css('color', 'blue');
-                console.log(data);
-        }
-    }) </pre>
+// code:
+$('#five').profanityFilter({
+    customSwears: ['ass'],
+    filter: true,
+    externalSwears: 'swearWords.json',
+    profaneText: function(data) {
+        $('#five')
+            .css('color', 'blue');
+            console.log(data);
+    }
+});</pre>
             <div class="description-example-wrapper">
                 <div class="description box">
                     This container won't filter anything, but it will do something clever because
@@ -158,7 +158,7 @@ $('#four').profanityFilter({
         
     <section>
     <pre class="prettyprint code box">
-    // code:
+// code:
 $('#six').profanityFilter({
     customSwears: ['ass', 'shit'],
     filter: false,
