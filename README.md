@@ -69,9 +69,7 @@ Option 6:
 
 ###**Get It:**###
 
- - bower
- 
-    bower install jQuery.ProfanityFilter
+ - bower `> bower install jQuery.ProfanityFilter`
 
 ###**Bug Tracker:**###
 
