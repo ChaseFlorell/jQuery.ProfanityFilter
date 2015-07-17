@@ -128,7 +128,8 @@
                 rep,
                 x,
                 inputs = $(this).find(':input'),
-                profane = false;
+                profane = false,
+                returnVal = [];
 
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
@@ -169,6 +170,7 @@
                 for (x = 0; x < nodes.length; x += 1) {
                     if (re.test(nodes[x].nodeValue)) {
                         profane = true;
+                        returnVal.push(badWords[i]);
                         if (options.filter) {
                             nodes[x].nodeValue = nodes[x].nodeValue.replace(re, rep);
                         }
@@ -179,6 +181,7 @@
                 for (var x = 0; x < inputs.length; x++) {
                     if (re.test(inputs[x].value)) {
                         profane = true;
+                        returnVal.push(badWords[i]);
                         if (options.filter) {
                             $(inputs[x]).val(inputs[x].value.replace(re, rep));
                         }
@@ -187,7 +190,7 @@
             }
 
             if (profane) {
-                options.profaneText();
+                options.profaneText(returnVal.unique());
             }
         });
     };
