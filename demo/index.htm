@@ -7,6 +7,15 @@
 
     <script type="text/javascript" src="jquery.profanityfilter.js"></script>
     <link href="styles.css" type="text/css" rel="stylesheet"/>
+    <style>
+        .six-highlight {
+            color: red;
+            text-decoration:underline;
+            font-weight: bold;
+            background-color:yellow;
+            padding: .2em;
+        }
+    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -110,41 +119,78 @@ $('#four').profanityFilter({
                 })
             </script>
         </div>
-    </section>
-<section>
-<pre class="prettyprint code box">
-// code:
-$('#five').profanityFilter({
-    customSwears: ['ass'],
-    filter: true,
-    externalSwears: 'swearWords.json',
-    profaneText: function(data) {
-        $('#five')
-            .css('color', 'blue');
-            console.log(data);
+        </section>
+    <section>
+    <pre class="prettyprint code box">
+    // code:
+    $('#five').profanityFilter({
+        customSwears: ['ass'],
+        filter: true,
+        externalSwears: 'swearWords.json',
+        profaneText: function(data) {
+            $('#five')
+                .css('color', 'blue');
+                console.log(data);
+        }
+    }) </pre>
+            <div class="description-example-wrapper">
+                <div class="description box">
+                    This container won't filter anything, but it will do something clever because
+                    it contains the word "ass"
+                </div>
+                <div id="five" class="example box">
+                    Often when I go to the bathroom, shit comes out of my ass.
+                </div>
+                <script>
+                    $('#five').profanityFilter({
+                        customSwears: ['ass'],
+                        filter: false,
+                        externalSwears: 'swearWords.json',
+                        profaneText: function(data) {
+                            $('#five').css('color', 'blue');
+                            console.log(data);
+                        }
+                    })
+                </script>
+            </div>
+        </section>
+        
+        
+    <section>
+    <pre class="prettyprint code box">
+    // code:
+$('#six').profanityFilter({
+    customSwears: ['ass', 'shit'],
+    filter: false,
+    profaneText: function (data) {
+        data.forEach(function (element, index) {
+            var str = '<span class="six-highlight">' + element + '</span>';
+            $('#six').html($("#six").html().replace(element, str));
+        });
     }
-}) </pre>
-        <div class="description-example-wrapper">
-            <div class="description box">
-                This container won't filter anything, but it will do something clever because
-                it contains the word "ass"
+});</pre>
+            <div class="description-example-wrapper">
+                <div class="description box">
+                    This container won't filter anything, but it will do something clever because
+                    it contains the word "ass"
+                </div>
+                <div id="six" class="example box">
+                    Often when I go to the bathroom, shit comes out of my ass.
+                </div>
+                <script>
+                     $('#six').profanityFilter({
+                        customSwears: ['ass', 'shit'],
+                        filter: false,
+                        profaneText: function (data) {
+                            data.forEach(function (element, index) {
+                                var str = '<span class="six-highlight">' + element + '</span>';
+                                $('#six').html($("#six").html().replace(element, str));
+                            });
+                        }
+                    });
+                </script>
             </div>
-            <div id="five" class="example box">
-                Often when I go to the bathroom, shit comes out of my ass.
-            </div>
-            <script>
-                $('#five').profanityFilter({
-                    customSwears: ['ass'],
-                    filter: false,
-                    externalSwears: 'swearWords.json',
-                    profaneText: function(data) {
-                        $('#five').css('color', 'blue');
-                        console.log(data);
-                    }
-                })
-            </script>
-        </div>
-    </section>
+        </section>
 
 
     <footer class="box">
