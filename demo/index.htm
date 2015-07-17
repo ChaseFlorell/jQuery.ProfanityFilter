@@ -118,7 +118,7 @@ $('#five').profanityFilter({
     customSwears: ['ass'],
     filter: true,
     externalSwears: 'swearWords.json',
-    profaneText: function() {
+    profaneText: function(data) {
         $('#five')
             .css('color', 'blue');
             console.log(data);
