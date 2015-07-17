@@ -67,7 +67,11 @@ Option 6:
     });
 
 
+###**Get It:**###
 
+ - bower
+ 
+    bower install jQuery.ProfanityFilter
 
 ###**Bug Tracker:**###
 

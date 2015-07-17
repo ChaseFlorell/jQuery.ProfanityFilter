@@ -171,15 +171,15 @@ $('#six').profanityFilter({
 });</pre>
             <div class="description-example-wrapper">
                 <div class="description box">
-                    This container won't filter anything, but it will do something clever because
-                    it contains the word "ass"
+                    This container won't filter anything, but it will do something clever with the swears that it finds.
                 </div>
                 <div id="six" class="example box">
                     Often when I go to the bathroom, shit comes out of my ass.
                 </div>
                 <script>
                      $('#six').profanityFilter({
-                        customSwears: ['ass', 'shit'],
+                        customSwears: ['ass'],
+                        externalSwears: 'swearWords.json',
                         filter: false,
                         profaneText: function (data) {
                             data.forEach(function (element, index) {
@@ -196,7 +196,7 @@ $('#six').profanityFilter({
     <footer class="box">
         <p>Like what you see?<br>
             <b>Download:</b> <a href="https://github.com/ChaseFlorell/jQuery.ProfanityFilter">on GitHub</a></p>
-
+            <b>Bower Install:</b><pre>bower install jQuery.profanityFilter</pre>></p>
         <p>Find a bug?<br>
             <b>Issues:</b> <a href="https://github.com/ChaseFlorell/jQuery.ProfanityFilter/issues">Issue tracker</a></p>
 
