@@ -1,6 +1,6 @@
 {
   "name": "jQuery.ProfanityFilter",
-  "main": "jQuery.ProfanityFilter.js",
+  "main": "jquery.profanityfilter.js",
   "version": "1.0.0",
   "homepage": "https://github.com/ChaseFlorell/jQuery.ProfanityFilter",
   "authors": [
