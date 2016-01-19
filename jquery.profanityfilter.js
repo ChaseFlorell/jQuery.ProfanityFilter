@@ -129,15 +129,16 @@
                 x,
                 inputs = $(this).find(':input'),
                 profane = false,
-                data = [];
+                data = [],
+                localSwearsKey = 'localSwears' + options.externalSwears;
 
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
-                    if (localStorage.getItem('localSwears') === null) {
+                    if (localStorage.getItem(localSwearsKey) === null) {
                         // stringify the array so that it can be stored in local storage
-                        localStorage.setItem('localSwears', JSON.stringify(readJsonFromController(options.externalSwears)));
+                        localStorage.setItem(localSwearsKey, JSON.stringify(readJsonFromController(options.externalSwears)));
                     }
-                    badWords = JSON.parse(localStorage.getItem('localSwears'));
+                    badWords = JSON.parse(localStorage.getItem(localSwearsKey));
                 } else {
                     badWords = readJsonFromController(options.externalSwears);
                 }
