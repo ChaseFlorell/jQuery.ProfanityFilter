@@ -134,11 +134,13 @@
 
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
-                    if (localStorage.getItem(localSwearsKey) === null) {
+                    var badWordsJSON = localStorage.getItem(localSwearsKey);
+                    if (badWordsJSON === null) {
                         // stringify the array so that it can be stored in local storage
-                        localStorage.setItem(localSwearsKey, JSON.stringify(readJsonFromController(options.externalSwears)));
+                        badWordsJSON = JSON.stringify(readJsonFromController(options.externalSwears));
+                        localStorage.setItem(localSwearsKey, badWordsJSON);
                     }
-                    badWords = JSON.parse(localStorage.getItem(localSwearsKey));
+                    badWords = JSON.parse(badWordsJSON);
                 } else {
                     badWords = readJsonFromController(options.externalSwears);
                 }
@@ -195,4 +197,4 @@
             };
         });
     };
-})(jQuery);
+})(jQuery);
