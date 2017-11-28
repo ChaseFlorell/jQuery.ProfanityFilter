@@ -1,5 +1,4 @@
-<!-- a comment-->
-## **jQuery.profanityFilter plug-in** ##
+## jQuery.profanityFilter plug-in ##
 
 [demo](https://chaseflorell.github.io/jQuery.ProfanityFilter/demo/)
 
@@ -10,25 +9,25 @@ This was built in order to allow users to "Opt-in" to profanity filtering, and o
 ***Obvious warning:*** *The `swearWord` lists as well as code examples contain material that many will find offensive. (But that's the point!)*
 *note: localization support provided by shutterstock's [List of Dirty, Naughty, Obscene, and Otherwise Bad Words](https://github.com/shutterstock/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words)*
 
-###**Usage:**###
+### Usage: ###
 
 ---
 
-Option 1:
+**Option 1:**
 
     // Filter the word "shit" every time it shows up inside the element "SomeElement"
     $('#SomeElement').profanityFilter({
         customSwears: ['shit']
     });
 
-Option 2:
+**Option 2:**
 
     // Filter an external array of words on the entire document
     $(document).profanityFilter({
         externalSwears: '/Path/To/Json/Swears/'
     });
 
-Option 3:
+**Option 3:**
 
     // Change the replacement character from an astrisk (*) to a pound sign (#)
     $('#SomeElement').profanityFilter({
@@ -36,7 +35,7 @@ Option 3:
         replaceWith: '#'
     });
 
-Option 4:
+**Option 4:**
 
     // Change the replacement from astrisks (*) to random words
     $('#SomeElement').profanityFilter({
@@ -44,7 +43,7 @@ Option 4:
         replaceWith: ['fiddle', 'fun', 'stupendous']
     });
 
-Option 5:
+**Option 5:**
 
     // Combine an externl Swear list with a custom list (don't worry, we'll remove duplicates)
     $('#SomeElement').profanityFilter({
@@ -52,7 +51,7 @@ Option 5:
         externalSwears: '/Path/To/Json/Swears/'
     });
 
-Option 6:
+**Option 6:**
 
     // Don't filter anything. Useful in conjunction with the profaneText callback (which only
     // fires when profanity exists).
@@ -67,11 +66,11 @@ Option 6:
     });
 
 
-###**Get It:**###
+### Get It: ###
 
  - bower `> bower install jQuery.ProfanityFilter`
 
-###**Bug Tracker:**###
+### Bug Tracker: ###
 
 ---
 
@@ -79,7 +78,7 @@ Find a bug? Please create an issue here on GitHub!
 https://github.com/ChaseFlorell/jQuery.profanityFilter/issues
 
 
-###**Dependencies**###
+### Dependencies ###
 
 ----
 
@@ -87,7 +86,7 @@ This plugin requires:
 
  - [jQuery](http://jquery.com/) (tested 1.7.1)
 
-###**Author:**###
+### Author: ###
 
 ---
 
@@ -96,7 +95,7 @@ Chase Florell
  - http://github.com/ChaseFlorell
  - http://twitter.com/ChaseFlorell
 
-###**Copyright and License**###
+### Copyright and License ###
 
 ---
 
