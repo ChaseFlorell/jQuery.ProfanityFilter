@@ -42,7 +42,8 @@
     $.fn.profanityFilter = function (settings, callback) {
 
         var options = $.extend({}, defaults, settings),
-            localStorageIsEnabled;
+            localStorageIsEnabled,
+            badWords;
 
         localStorageIsEnabled = function() {
               var uid = new Date(),
@@ -118,19 +119,8 @@
           return randomNumber;
         }
 
-
-        return this.each(function () {
-
-            var badWords,
-                i,
-                nodes = allTextNodes(this),
-                re,
-                rep,
-                x,
-                inputs = $(this).find(':input'),
-                profane = false,
-                data = [];
-
+        function collateBadWords () {
+            var badWords;
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
                     if (localStorage.getItem('localSwears') === null) {
@@ -150,10 +140,26 @@
                 }
             }
 
-            // GET OUT, there are no Swears set either custom, external OR local.
-            if (badWords === null) {
-                return;
-            }
+            return badWords;
+        }
+
+        badWords = collateBadWords();
+
+        // GET OUT, there are no Swears set either custom, external OR local.
+        if (badWords === null) {
+            return;
+        }
+
+        return this.each(function () {
+
+            var i,
+                nodes = allTextNodes(this),
+                re,
+                rep,
+                x,
+                inputs = $(this).find(':input'),
+                profane = false,
+                data = [];
 
             // We've got an array of swears, let's proceed with removing them from the element.
             for (i = 0; i < badWords.length; i += 1) {

@@ -42,7 +42,8 @@
     $.fn.profanityFilter = function (settings, callback) {
 
         var options = $.extend({}, defaults, settings),
-            localStorageIsEnabled;
+            localStorageIsEnabled,
+            badWords;
 
         localStorageIsEnabled = function() {
               var uid = new Date(),
@@ -50,7 +51,7 @@
 
               try {
                 localStorage.setItem("uid", uid);
-                result = localStorage.getItem("uid") == uid;
+                result = localStorage.getItem("uid") === uid;
                 localStorage.removeItem("uid");
                 return result && localStorage;
               } catch(e) {}
@@ -118,29 +119,15 @@
           return randomNumber;
         }
 
-
-        return this.each(function () {
-
-            var badWords,
-                i,
-                nodes = allTextNodes(this),
-                re,
-                rep,
-                x,
-                inputs = $(this).find(':input'),
-                profane = false,
-                data = [],
-                localSwearsKey = 'localSwears' + options.externalSwears;
-
+        function collateBadWords () {
+            var badWords;
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
-                    var badWordsJSON = localStorage.getItem(localSwearsKey);
-                    if (badWordsJSON === null) {
+                    if (localStorage.getItem('localSwears') === null) {
                         // stringify the array so that it can be stored in local storage
-                        badWordsJSON = JSON.stringify(readJsonFromController(options.externalSwears));
-                        localStorage.setItem(localSwearsKey, badWordsJSON);
+                        localStorage.setItem('localSwears', JSON.stringify(readJsonFromController(options.externalSwears)));
                     }
-                    badWords = JSON.parse(badWordsJSON);
+                    badWords = JSON.parse(localStorage.getItem('localSwears'));
                 } else {
                     badWords = readJsonFromController(options.externalSwears);
                 }
@@ -153,10 +140,26 @@
                 }
             }
 
-            // GET OUT, there are no Swears set either custom, external OR local.
-            if (badWords === null) {
-                return;
-            }
+            return badWords;
+        }
+
+        badWords = collateBadWords();
+
+        // GET OUT, there are no Swears set either custom, external OR local.
+        if (badWords === null) {
+            return;
+        }
+
+        return this.each(function () {
+
+            var i,
+                nodes = allTextNodes(this),
+                re,
+                rep,
+                x,
+                inputs = $(this).find(':input'),
+                profane = false,
+                data = [];
 
             // We've got an array of swears, let's proceed with removing them from the element.
             for (i = 0; i < badWords.length; i += 1) {
