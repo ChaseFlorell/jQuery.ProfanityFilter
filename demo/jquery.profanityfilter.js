@@ -42,7 +42,8 @@
     $.fn.profanityFilter = function (settings, callback) {
 
         var options = $.extend({}, defaults, settings),
-            localStorageIsEnabled;
+            localStorageIsEnabled,
+            badWords;
 
         localStorageIsEnabled = function() {
               var uid = new Date(),
@@ -85,16 +86,20 @@
             return closed;
         }
 
-        function readJsonFromController(file) {
+        function readJsonFromController(file, callback) {
             var request = new XMLHttpRequest();
-            request.open('GET', file, false);
+            request.open('GET', file);
             request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            request.onload = function() {
+                var parsedJson;
+                try {
+                    parsedJson = JSON.parse(request.responseText);
+                } catch (e) {
+                    parsedJson = '';
+                }
+                callback.call(this, parsedJson);
+            };
             request.send(null);
-            try {
-                return JSON.parse(request.responseText);
-            } catch (e) {
-                return '';
-            }
         }
 
         var lastRandomNumber = null;
@@ -118,80 +123,98 @@
           return randomNumber;
         }
 
-
-        return this.each(function () {
-
-            var badWords,
-                i,
-                nodes = allTextNodes(this),
-                re,
-                rep,
-                x,
-                inputs = $(this).find(':input'),
-                profane = false,
-                data = [];
-
+        function collateBadWords (callback) {
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
                     if (localStorage.getItem('localSwears') === null) {
-                        // stringify the array so that it can be stored in local storage
-                        localStorage.setItem('localSwears', JSON.stringify(readJsonFromController(options.externalSwears)));
+                        readJsonFromController.call(this, options.externalSwears, function(externalBadWords) {
+                            // stringify the array so that it can be stored in local storage
+                            localStorage.setItem('localSwears', JSON.stringify(externalBadWords));
+                            externalFileChecked.call(this, externalBadWords);
+                        });
+                        return;
                     }
-                    badWords = JSON.parse(localStorage.getItem('localSwears'));
-                } else {
-                    badWords = readJsonFromController(options.externalSwears);
+                    externalFileChecked.call(this, JSON.parse(localStorage.getItem('localSwears')));
+                    return;
                 }
+                readJsonFromController.call(this, options.externalSwears, externalFileChecked.bind(this));
+                return;
+            }
+            externalFileChecked.call(this, null);
+
+            function externalFileChecked(externalBadWords) {
+                var badWords = [];
+
+                if (externalBadWords !== null) {
+                    badWords = badWords.concat(externalBadWords).unique();
+                }
+
                 if (options.customSwears !== null) {
                     badWords = badWords.concat(options.customSwears).unique();
                 }
-            } else {
-                if (options.customSwears !== null) {
-                    badWords = options.customSwears;
-                }
+
+                callback.call(this, badWords);
             }
+        }
 
-            // GET OUT, there are no Swears set either custom, external OR local.
-            if (badWords === null) {
-                return;
-            }
+        collateBadWords.call(this, function(badWords) {
 
-            // We've got an array of swears, let's proceed with removing them from the element.
-            for (i = 0; i < badWords.length; i += 1) {
-                re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
+          // GET OUT, there are no Swears set either custom, external OR local.
+          if (badWords === null) {
+              return;
+          }
 
-                var rand = generateRandomNumber(options.replaceWith.length -1);
+          this.each(function () {
 
-                rep = options.replaceWith[rand];
-                if (typeof options.replaceWith == 'string') {
-                  rep = options.replaceWith[rand].repeat(badWords[i].length);
-                }
+              var i,
+                  nodes = allTextNodes(this),
+                  re,
+                  rep,
+                  x,
+                  inputs = $(this).find(':input'),
+                  profane = false,
+                  data = [];
 
-                // Text nodes
-                for (x = 0; x < nodes.length; x += 1) {
-                    if (re.test(nodes[x].nodeValue)) {
-                        profane = true;
-                        data.push(badWords[i]);
-                        if (options.filter) {
-                            nodes[x].nodeValue = nodes[x].nodeValue.replace(re, rep);
-                        }
-                    }
-                }
+              // We've got an array of swears, let's proceed with removing them from the element.
+              for (i = 0; i < badWords.length; i += 1) {
+                  re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
 
-                // Text input values
-                for (var x = 0; x < inputs.length; x++) {
-                    if (re.test(inputs[x].value)) {
-                        profane = true;
-                        data.push(badWords[i]);
-                        if (options.filter) {
-                            $(inputs[x]).val(inputs[x].value.replace(re, rep));
-                        }
-                    }
-                }
-            }
+                  var rand = generateRandomNumber(options.replaceWith.length -1);
 
-            if (profane) {
-                options.profaneText(data.unique());
-            };
+                  rep = options.replaceWith[rand];
+                  if (typeof options.replaceWith == 'string') {
+                    rep = options.replaceWith[rand].repeat(badWords[i].length);
+                  }
+
+                  // Text nodes
+                  for (x = 0; x < nodes.length; x += 1) {
+                      if (re.test(nodes[x].nodeValue)) {
+                          profane = true;
+                          data.push(badWords[i]);
+                          if (options.filter) {
+                              nodes[x].nodeValue = nodes[x].nodeValue.replace(re, rep);
+                          }
+                      }
+                  }
+
+                  // Text input values
+                  for (var x = 0; x < inputs.length; x++) {
+                      if (re.test(inputs[x].value)) {
+                          profane = true;
+                          data.push(badWords[i]);
+                          if (options.filter) {
+                              $(inputs[x]).val(inputs[x].value.replace(re, rep));
+                          }
+                      }
+                  }
+              }
+
+              if (profane) {
+                  options.profaneText(data.unique());
+              };
+          });
         });
+
+        return this;
     };
 })(jQuery);
