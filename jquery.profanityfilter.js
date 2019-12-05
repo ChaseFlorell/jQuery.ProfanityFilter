@@ -135,7 +135,8 @@
             if (options.externalSwears !== null) {
                 if (localStorageIsEnabled) {
                     var badWordsJSON = localStorage.getItem(localSwearsKey);
-                    if (badWordsJSON === null) {
+                    // check for non-existence or an empty set
+                    if (badWordsJSON === null || badWordsJSON == "\"\"") {
                         // stringify the array so that it can be stored in local storage
                         badWordsJSON = JSON.stringify(readJsonFromController(options.externalSwears));
                         localStorage.setItem(localSwearsKey, badWordsJSON);
