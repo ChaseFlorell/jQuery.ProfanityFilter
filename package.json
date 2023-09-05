@@ -29,6 +29,6 @@
        }
    ],
    "dependencies": {
-       "jquery": "1.7.1"
+       "jquery": "3.5.0"
    }
 }
